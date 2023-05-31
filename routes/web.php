@@ -27,14 +27,15 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get('/', function () {
     return view('welcome');
 })->middleware('guest');
+
 Route::post('/', [LoginController::class, 'login'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::post('/Change-password', [LoginController::class, 'changePassword'])->name('change_password');
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('change-password',[dashboardController::class,'change_password_view'])->name('change_password_view');
-    Route::post('change-password',[dashboardController::class,'change_password'])->name('change_password');
+    Route::get('change-password', [dashboardController::class, 'change_password_view'])->name('change_password_view');
+    Route::post('change-password', [dashboardController::class, 'change_password'])->name('change_password');
     Route::get('/dashboard', [dashboardController::class, 'index'])->name('dashboard');
 
     // author CRUD
@@ -62,8 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
 
 
-
-
     // books CRUD
     Route::get('/books', [BookController::class, 'index'])->name('books');
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
@@ -80,7 +79,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
     Route::post('/student/create', [StudentController::class, 'store'])->name('student.store');
     Route::get('/student/show/{id}', [StudentController::class, 'show'])->name('student.show');
-
 
 
     Route::get('/book_issue', [BookIssueController::class, 'index'])->name('book_issued');
