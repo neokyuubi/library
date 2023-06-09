@@ -61,9 +61,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/category/delete/{id}', [CategoryController::class, 'destroy'])->name('category.destroy');
     Route::post('/category/create', [CategoryController::class, 'store'])->name('category.store');
 
-
-
-
     // books CRUD
     Route::get('/books', [BookController::class, 'index'])->name('books');
     Route::get('/book/create', [BookController::class, 'create'])->name('book.create');
@@ -71,6 +68,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/book/update/{id}', [BookController::class, 'update'])->name('book.update');
     Route::post('/book/delete/{id}', [BookController::class, 'destroy'])->name('book.destroy');
     Route::post('/book/create', [BookController::class, 'store'])->name('book.store');
+    // Route::post('/book/search', [BookController::class, 'search'])->name('book.search');
 
     // students CRUD
     Route::get('/students', [StudentController::class, 'index'])->name('students');
@@ -80,8 +78,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/student/delete/{id}', [StudentController::class, 'destroy'])->name('student.destroy');
     Route::post('/student/create', [StudentController::class, 'store'])->name('student.store');
     Route::get('/student/show/{id}', [StudentController::class, 'show'])->name('student.show');
-
-
 
     Route::get('/book_issue', [BookIssueController::class, 'index'])->name('book_issued');
     Route::get('/book-issue/create', [BookIssueController::class, 'create'])->name('book_issue.create');

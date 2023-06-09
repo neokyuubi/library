@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\student;
 use App\Http\Requests\StorestudentRequest;
 use App\Http\Requests\UpdatestudentRequest;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -13,10 +14,30 @@ class StudentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $name = $request->get("name", "");
+        $email = $request->get("email", "");
+
+        $query = student::query();
+        $searchParams = [];
+
+        $query->when($name != "", function ($query) use ($name, &$searchParams) {
+            $searchParams['name'] = $name;
+            return $query->where('name', 'like', '%'. $name .'%');
+        })
+        ->when($email != "", function ($query) use ($email, &$searchParams) {
+            $searchParams['email'] = $email;
+            return $query->orWhere('email', 'like', '%'. $email .'%');
+        });
+
+        $students = $query->paginate(5);
+
+        if(count($searchParams) > 0) $students->appends($searchParams);
+
         return view('student.index', [
-            'students' => student::Paginate(5)
+            'students' => $students
         ]);
     }
 

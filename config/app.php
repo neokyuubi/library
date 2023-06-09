@@ -13,8 +13,8 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Système de gestion de bibliothèque'),
-    'title' => env('APP_TITLE', 'Library Management System'), // Système de gestion de bibliothèque
+    'name' => env('APP_NAME', 'Library Management System'),
+    'title' => env('APP_TITLE', 'Library Management System'),
 
     /*
     |--------------------------------------------------------------------------

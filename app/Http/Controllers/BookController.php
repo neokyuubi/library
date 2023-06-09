@@ -8,6 +8,7 @@ use App\Http\Requests\UpdatebookRequest;
 use App\Models\auther;
 use App\Models\category;
 use App\Models\publisher;
+use Illuminate\Http\Request;
 
 class BookController extends Controller
 {
@@ -16,11 +17,29 @@ class BookController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $name = $request->get("name", "");
+        $id = $request->get("id", 0);
+
+        $query = Book::query();
+        $searchParams = [];
+
+        $query->when($name != "", function ($query) use ($name, &$searchParams) {
+            $searchParams['name'] = $name;
+            return $query->where('name', 'like', '%'. $name .'%');
+        })
+        ->when($id > 0, function ($query) use ($id, &$searchParams) {
+            $searchParams['id'] = $id;
+            return $query->orWhere('id', 'like', '%'. $id .'%');
+        });
+
+        $books = $query->paginate(5);
+
+        if(count($searchParams) > 0) $books->appends($searchParams);
 
         return view('book.index', [
-            'books' => book::Paginate(5)
+            'books' => $books
         ]);
     }
 
@@ -51,7 +70,6 @@ class BookController extends Controller
         ]);
         return redirect()->route('books');
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -86,6 +104,7 @@ class BookController extends Controller
         $book->save();
         return redirect()->route('books');
     }
+
 
     /**
      * Remove the specified resource from storage.

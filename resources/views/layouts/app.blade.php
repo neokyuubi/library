@@ -45,15 +45,15 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="menu">
-                        <li><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ route('authors') }}">Authors</a></li>
-                        <li><a href="{{ route('publishers') }}">Publishers</a></li>
-                        <li><a href="{{ route('categories') }}">Categories</a></li>
-                        <li><a href="{{ route('students') }}">Reg Students</a></li>
-                        <li><a href="{{ route('books') }}">Books</a></li>
-                        <li><a href="{{ route('book_issued') }}">Book Issue</a></li>
-                        <li><a href="{{ route('reports') }}">Reports</a></li>
-                        <li><a href="{{ route('settings') }}">Settings</a></li>
+                        <li class="{{ Request::is('dashboard*') ? 'current' : '' }}"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                        <li class="{{ Request::is('authors*') ? 'current' : '' }}"><a href="{{ route('authors') }}">Authors</a></li>
+                        <li class="{{ Request::is('publishers*') ? 'current' : '' }}"><a href="{{ route('publishers') }}">Publishers</a></li>
+                        <li class="{{ Request::is('categories*') ? 'current' : '' }}"><a href="{{ route('categories') }}">Categories</a></li>
+                        <li class="{{ Request::is('students*') ? 'current' : '' }}"><a href="{{ route('students') }}">Students</a></li>
+                        <li class="{{ Request::is('books*') ? 'current' : '' }}"><a href="{{ route('books') }}">Books</a></li>
+                        <li class="{{ Request::is('book_issued*') ? 'current' : '' }}"><a href="{{ route('book_issued') }}">Book Issued</a></li>
+                        <li class="{{ Request::is('reports*') ? 'current' : '' }}"><a href="{{ route('reports') }}">Reports</a></li>
+                        <li class="{{ Request::is('settings*') ? 'current' : '' }}"><a href="{{ route('settings') }}">Settings</a></li>
                     </ul>
                 </div>
             </div>

@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-
     <div id="admin-content">
         <div class="container">
             <div class="row">
@@ -9,6 +8,26 @@
                 </div>
                 <div class="offset-md-7 col-md-2">
                     <a class="add-new" href="{{ route('book.create') }}">Add Book</a>
+                </div>
+            </div>
+            <div class="row" style="margin-bottom: 13px;">
+                <div class="col-md-6">
+                    <form class="yourform" action="{{ route('books') }}" method="get" autocomplete="on">
+                        <div class="form-group">
+                            <label for="searchbynumber">Search by Number</label>
+                            <input id="searchbynumber" type="text" class="form-control" placeholder="Search Book by Number" name="id" >
+                        </div>
+                        <input type="submit" class="btn btn-danger" value="Search" >
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <form class="yourform" action="{{ route('books') }}" method="get" autocomplete="on">
+                        <div class="form-group">
+                            <label for="searchbyname">Search by Name</label>
+                            <input id="searchbyname" type="text" class="form-control" placeholder="Search Book by Name" name="name" >
+                        </div>
+                        <input type="submit" class="btn btn-danger" value="Search" >
+                    </form>
                 </div>
             </div>
             <div class="row">
