@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -51,7 +51,7 @@
                         <li class="{{ Request::is('categories*') ? 'current' : '' }}"><a href="{{ route('categories') }}">Categories</a></li>
                         <li class="{{ Request::is('students*') ? 'current' : '' }}"><a href="{{ route('students') }}">Students</a></li>
                         <li class="{{ Request::is('books*') ? 'current' : '' }}"><a href="{{ route('books') }}">Books</a></li>
-                        <li class="{{ Request::is('book_issued*') ? 'current' : '' }}"><a href="{{ route('book_issued') }}">Book Issued</a></li>
+                        <li class="{{ Request::is('book_*') ? 'current' : '' }}"><a href="{{ route('book_issued') }}">Book Issued</a></li>
                         <li class="{{ Request::is('reports*') ? 'current' : '' }}"><a href="{{ route('reports') }}">Reports</a></li>
                         <li class="{{ Request::is('settings*') ? 'current' : '' }}"><a href="{{ route('settings') }}">Settings</a></li>
                     </ul>

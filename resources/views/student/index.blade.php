@@ -24,7 +24,7 @@
                     <form class="yourform" action="{{ route('students') }}" method="get" autocomplete="on">
                         <div class="form-group">
                             <label for="searchbyemail">Search by Email</label>
-                            <input id="searchbyemail" type="text" class="form-control" placeholder="Search Book by Email" name="email" >
+                            <input id="searchbyemail" type="text" class="form-control" placeholder="Search student by Email" name="email" >
                         </div>
                         <input type="submit" class="btn btn-danger" value="Search" >
                     </form>

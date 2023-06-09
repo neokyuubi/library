@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="admin-heading">All Book Issue</h2>
+                    <h2 class="admin-heading">All Books Issued</h2>
                 </div>
                 <div class="offset-md-6 col-md-3">
                     <a class="add-new" href="{{ route('book_issue.create') }}">Add Book Issue</a>

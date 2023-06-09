@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\settings;
-use App\Http\Requests\StoresettingsRequest;
 use App\Http\Requests\UpdatesettingsRequest;
 
 class SettingsController extends Controller
